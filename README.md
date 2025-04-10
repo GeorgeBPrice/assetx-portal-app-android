@@ -8,6 +8,9 @@ AssetX aims to empower organizations with real-time asset control, AI-driven ins
 
 **Note**: This project is a personal experiment and not an official part of the AssetX.ai platform.
 
+![Screenshot_Dashboard](https://github.com/user-attachments/assets/c03e3d55-6181-44dc-bcdf-c678f1c7e0f1)
+
+
 ---
 
 ## Features (Stage 1)
