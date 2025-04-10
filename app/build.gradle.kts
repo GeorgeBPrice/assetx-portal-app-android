@@ -18,6 +18,21 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+            all {
+                it.jvmArgs("-XX:+EnableDynamicAgentLoading")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -52,6 +67,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.compose.material.icons.extended)
 
     // Retrofit & Gson
     implementation(libs.retrofit)
@@ -59,11 +75,10 @@ dependencies {
 
     // OkHttp (for interceptors/auth)
     implementation(libs.okhttp)
-    implementation (libs.logging.interceptor)
+    implementation(libs.logging.interceptor)
 
     // MPAndroidChart (charts)
     implementation(libs.mpandroidchart)
-    implementation(libs.androidx.compose.material.icons.extended)
 
     // Navigation Compose
     implementation(libs.androidx.navigation.compose)
@@ -73,10 +88,21 @@ dependencies {
 
     // Testing
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockwebserver)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.mockwebserver)
+    androidTestImplementation(libs.retrofit)
+    androidTestImplementation(libs.converter.gson)
+    androidTestImplementation(libs.kotlinx.coroutines.test)
 
     // Debug tooling
     debugImplementation(libs.androidx.ui.tooling)

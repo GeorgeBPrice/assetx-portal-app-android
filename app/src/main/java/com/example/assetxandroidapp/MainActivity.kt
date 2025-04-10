@@ -22,6 +22,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.assetxandroidapp.data.Asset
 import com.example.assetxandroidapp.data.Expense
 import com.example.assetxandroidapp.viewmodel.DashboardViewModel
+import com.example.assetxandroidapp.viewmodel.DashboardViewModelFactory
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.HorizontalBarChart
 import com.github.mikephil.charting.components.MarkerView
@@ -43,23 +44,24 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-// Custom extension function to reset the chart view
-private fun BarChart.resetChart() {
-    resetZoom() // Reset zoom to default
-    resetViewPortOffsets() // Reset any custom offsets
-    moveViewToX(0f) // Scroll back to the start
+// Custom extension function to reset the chart views
+fun BarChart.resetChart() {
+    resetZoom()
+    fitScreen()
+    resetViewPortOffsets()
+    moveViewToX(0f)
 }
 
-// Overload for HorizontalBarChart (inherits from BarChart, but explicit for clarity)
-private fun HorizontalBarChart.resetChart() {
+fun HorizontalBarChart.resetChart() {
     resetZoom()
+    fitScreen()
     resetViewPortOffsets()
     moveViewToX(0f)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DashboardScreen(viewModel: DashboardViewModel = viewModel()) {
+fun DashboardScreen( viewModel: DashboardViewModel = viewModel(factory = DashboardViewModelFactory())) {
     val assets by viewModel.assets.collectAsState()
     val expenses by viewModel.expenses.collectAsState()
 
