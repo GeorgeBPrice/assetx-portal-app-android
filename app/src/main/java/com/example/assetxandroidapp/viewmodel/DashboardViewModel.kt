@@ -5,12 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.assetxandroidapp.data.Asset
 import com.example.assetxandroidapp.data.Expense
+import com.example.assetxandroidapp.network.AssetApi
+import com.example.assetxandroidapp.network.ExpenseApi
 import com.example.assetxandroidapp.network.RetrofitInstance
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class DashboardViewModel : ViewModel() {
+class DashboardViewModel(assetApi: AssetApi, expenseApi: ExpenseApi) : ViewModel() {
     private val _assets = MutableStateFlow<List<Asset>>(emptyList())
     val assets: StateFlow<List<Asset>> = _assets
 
