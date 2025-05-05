@@ -167,10 +167,3 @@ This is a personal experiment, but feedback and suggestions are welcome! Feel fr
 This project is unlicensed and intended for personal experimentation only. It is not affiliated with the official AssetX.ai platform.
 
 ---
-
-### Notes
-- **OS Version**: I chose Android 8.0 (API 26) as the minimum to balance compatibility and modern feature support (e.g., Compose). Targeting Android 14 ensures it’s optimized for the latest devices.
-- **What Else?**: Added ideas like push notifications and accessibility, which are common in production Android apps but optional for an experiment.
-- **Stage 1 Focus**: Kept the README focused on the current dashboard while hinting at future potential.
-
-Let me know if you’d like to adjust the stages, add more details, or refine anything else!
